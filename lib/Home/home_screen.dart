@@ -40,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         body: postdata);
     var data = json.decode(response.body);
+
     List<Schedule> loadedTickets = [];
     data['data'].forEach((ticket) {
       loadedTickets.add(
@@ -173,16 +174,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   alignment: Alignment.center,
                   child: const CircularProgressIndicator(),
                 )
-              : SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.only(left: 20),
-                  child: Row(
-                    children: tickets
-                        .map((singleTicket) => TicketView(
-                              ticket: singleTicket,
-                            ))
-                        .toList(),
-                  )),
+              : tickets.isNotEmpty
+                  ? SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Row(
+                        children: tickets
+                            .map((singleTicket) => TicketView(
+                                  ticket: singleTicket,
+                                ))
+                            .toList(),
+                      ))
+                  : const Center(
+                      child: Text(
+                      'No results found',
+                      style: TextStyle(color: Colors.grey),
+                    )),
           const SizedBox(height: 15),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),

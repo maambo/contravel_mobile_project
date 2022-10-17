@@ -1,5 +1,6 @@
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/empty_router_widgets.dart';
+import 'package:contravel/Home/select_seat_screen.dart';
 import '../Service_provider/Servece_provider.dart';
 import '../chat_app/Register_page.dart';
 import '../chat_app/login_page.dart';
@@ -17,10 +18,16 @@ import '../Home/home_screen.dart';
       AutoRoute(
         path: 'home',
         name: 'homeRouter',
-        page: HomeScreen,
+        page: EmptyRouterPage,
         children: [
-          //AutoRoute(path: '', page: PostsPage),
-          //AutoRoute(path: ':postId', page: SinglePostPage),
+          AutoRoute(
+            path: '',
+            page: HomeScreen,
+          ),
+          AutoRoute(
+            path: 'fromTicketToselect',
+            page: SelectSeatPage,
+          )
         ],
       ),
 

@@ -1,3 +1,6 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:contravel/Home/select_seat_screen.dart';
+import 'package:contravel/screens/router.gr.dart';
 import 'package:flutter/material.dart';
 import '../service/schedule.dart';
 import 'dart:convert';
@@ -155,7 +158,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: Styles.healdLineStyle3,
                     ),
                     InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          context.router.push(
+                            const SelectSeatRoute(),
+                          );
+                        },
                         child: Text(
                           "View all",
                           style: Styles.healdLineStyle4
